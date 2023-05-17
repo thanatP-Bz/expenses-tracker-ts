@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { AddTransactionHook } from "../hooks/AddTransactionHook";
+import { useAddTransaction } from "../hooks/AddTransactionHook";
 
 const AddTransition = () => {
   const [text, setText] = useState<string>("");
   const [amount, setAmount] = useState<number | string>(0);
 
-  const { addTransaction } = AddTransactionHook();
+  const { addTransaction } = useAddTransaction();
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();

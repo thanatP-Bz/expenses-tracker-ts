@@ -1,8 +1,8 @@
 import axios from "axios";
-import { UseAppContext } from "./UseAppContext";
+import { useAppContext } from "./UseAppContext";
 
 export const DeleteTransactionHook = () => {
-  const { dispatch } = UseAppContext();
+  const { dispatch } = useAppContext();
 
   const deleteTransaction = async (id: number) => {
     const response = await axios.delete(

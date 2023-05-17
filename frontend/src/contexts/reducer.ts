@@ -1,10 +1,10 @@
 import { Actions } from "./action";
-import { initialState } from "./InitialState";
+import type { initialStateType } from "./InitialState";
 
 export const reducer = (
-  state: typeof initialState,
+  state: initialStateType,
   action: Actions
-): typeof initialState => {
+): initialStateType => {
   switch (action.type) {
     case "DELETE_TRANSACTION":
       return {

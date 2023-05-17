@@ -1,9 +1,9 @@
 import { Dispatch } from "react";
-import { stateType } from "../stateType";
+import { StateType } from "../stateType";
 import { Actions } from "./action";
 
-type initialStateType = {
-  transactions: stateType[];
+export type initialStateType = {
+  transactions: StateType[];
   dispatch: Dispatch<Actions>;
   deleteTransaction: (id: number) => void;
   addTransaction?: (_id: number, text: string, amount: number) => void;

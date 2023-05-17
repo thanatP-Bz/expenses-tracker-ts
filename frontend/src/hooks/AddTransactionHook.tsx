@@ -1,13 +1,18 @@
 import axios from "axios";
-import { UseAppContext } from "./UseAppContext";
+import { useAppContext } from "./UseAppContext";
 
-export const AddTransactionHook = () => {
-  const { dispatch } = UseAppContext();
+export const useAddTransaction = () => {
+  const { dispatch } = useAppContext();
 
-  const addTransaction = async (_id: number, text: string, amount: number) => {
+  type AddTransactionParams = {
+    id: number;
+    text: string;
+    amount: number;
+  };
+  const addTransaction = async (id: number, text: string, amount: number) => {
     const response = await axios.post(
       `https://expense-tracker-94sm.onrender.com/api/v1/expense/add`,
-      { id: _id, text: text, amount: amount }
+      { id, text, amount }
     );
 
     const data = response.data;

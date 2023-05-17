@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { UseAppContext } from "../hooks/UseAppContext";
+import { useAppContext } from "../hooks/UseAppContext";
 import Transition from "./Transition";
 import axios from "axios";
 
 const TransactionList = () => {
-  const { transactions, dispatch } = UseAppContext();
+  const { transactions, dispatch } = useAppContext();
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,7 +1,7 @@
-import { UseAppContext } from "../hooks/UseAppContext";
+import { useAppContext } from "../hooks/UseAppContext";
 
 const Balance = () => {
-  const { transactions } = UseAppContext();
+  const { transactions } = useAppContext();
 
   const amounts = transactions.map((transaction) => transaction.amount);
 
