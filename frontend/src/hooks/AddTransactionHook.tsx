@@ -4,12 +4,12 @@ import { useAppContext } from "./UseAppContext";
 export const useAddTransaction = () => {
   const { dispatch } = useAppContext();
 
-  type AddTransactionParams = {
+  const addTransaction = async (addTransaction: {
     id: number;
     text: string;
     amount: number;
-  };
-  const addTransaction = async (id: number, text: string, amount: number) => {
+  }) => {
+    const { id, text, amount } = addTransaction;
     const response = await axios.post(
       `https://expense-tracker-94sm.onrender.com/api/v1/expense/add`,
       { id, text, amount }

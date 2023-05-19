@@ -10,9 +10,19 @@ const AddTransition = () => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const id = Math.random();
+    type AddTransactionParams = {
+      id: number;
+      text: string;
+      amount: number;
+    };
 
-    addTransaction(id, text, +amount);
+    const newTransaction: AddTransactionParams = {
+      id: Math.random(),
+      text: text,
+      amount: +amount,
+    };
+
+    addTransaction(newTransaction);
 
     setAmount(0);
     setText("");

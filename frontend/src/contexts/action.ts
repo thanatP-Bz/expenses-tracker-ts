@@ -1,12 +1,12 @@
-import { StateType } from "../stateType";
+import { Expense } from "../expense";
 
 export type Actions =
   | { type: "DELETE_TRANSACTION"; payload: number }
   | {
       type: "ADD_TRANSACTION";
-      payload: StateType;
+      payload: Expense;
     }
   | {
       type: "GET_TRANSACTION";
-      payload: StateType[];
+      payload: Expense[];
     };
