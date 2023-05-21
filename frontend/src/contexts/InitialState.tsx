@@ -1,9 +1,11 @@
 import { Dispatch } from "react";
-import { Expense } from "../expense";
+import { ExpenseType } from "../inintialType";
+import { AlertType } from "../inintialType";
 import { Actions } from "./action";
 
-export type initialStateType = {
-  transactions: Expense[];
+export type InitialState = {
+  transactions: ExpenseType[];
+  alert: AlertType;
   dispatch: Dispatch<Actions>;
   deleteTransaction: (id: number) => void;
   addTransaction?: (AddTransactionParams: {
@@ -11,11 +13,18 @@ export type initialStateType = {
     text: string;
     amount: number;
   }) => void;
+  displayAlert: () => void;
 };
 
-export const initialState: initialStateType = {
+export const initialState: InitialState = {
   transactions: [],
+  alert: {
+    alertText: "",
+    alertType: "",
+    showAlert: false,
+  },
   dispatch: () => void {},
   deleteTransaction: () => void {},
   addTransaction: () => void {},
+  displayAlert: () => void {},
 };

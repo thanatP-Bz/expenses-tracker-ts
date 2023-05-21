@@ -1,51 +1,65 @@
 import { useState } from "react";
+import { LoginType } from "../login";
 import Alert from "../components/Alert";
+import FormRow from "../components/FormRow";
+
+const initialState: LoginType = {
+  name: "",
+  email: "",
+  password: "",
+  isMember: false,
+  showAlert: true,
+};
 
 function Login() {
-  interface InitialType {
-    name: string;
-    email: string;
-    password: string | number;
-    isMember: boolean;
-    alert: boolean;
-  }
-
-  const initialState: InitialType = {
-    name: "",
-    email: "",
-    password: "",
-    isMember: false,
-    alert: true,
-  };
-
   const [values, setValues] = useState(initialState);
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
+  const onSubmitHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
+
+  const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    console.log();
+  };
+
   return (
     <div className="container">
-      <Alert />
-      <form action="" className="login-form">
+      {values.showAlert && <Alert />}
+      <form onSubmit={onSubmitHandler} className="login-form">
         <div className="pb-4 text-2xl">
           <h2 className="text-gray-500">
             {values.isMember ? "Register" : "Login"}
           </h2>
         </div>
 
-        {values.isMember ? (
-          <div>
-            <input type="text" placeholder="name" />
-            <input type="email" placeholder="email" />
-            <input type="text" placeholder="password" />
-          </div>
-        ) : (
-          <div>
-            <input type="email" placeholder="email" />
-            <input type="text" placeholder="password" />
-          </div>
+        {values.isMember && (
+          <FormRow
+            type="text"
+            placeholder="name"
+            name="name"
+            onChange={onChangeHandler}
+            value={values.name}
+          />
         )}
+
+        <FormRow
+          type="email"
+          placeholder="email"
+          name="email"
+          onChange={onChangeHandler}
+          value={values.email}
+        />
+        <FormRow
+          type="text"
+          placeholder="password"
+          name="password"
+          onChange={onChangeHandler}
+          value={values.password}
+        />
 
         <button type="submit" className="btn">
           submit

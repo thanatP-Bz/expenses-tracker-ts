@@ -1,10 +1,7 @@
 import { Actions } from "./action";
-import type { initialStateType } from "./InitialState";
+import type { InitialState } from "./InitialState";
 
-export const reducer = (
-  state: initialStateType,
-  action: Actions
-): initialStateType => {
+export const reducer = (state: InitialState, action: Actions): InitialState => {
   switch (action.type) {
     case "DELETE_TRANSACTION":
       return {
@@ -23,6 +20,18 @@ export const reducer = (
         ...state,
         transactions: action.payload,
       };
+    //display alert
+    case "DISPLAY_ALERT":
+      return {
+        ...state,
+        alert: {
+          ...state,
+          alertText: "Please provide all values",
+          alertType: "danger",
+          showAlert: true,
+        },
+      };
+
     default:
       return state;
   }

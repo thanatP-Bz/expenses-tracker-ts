@@ -1,12 +1,15 @@
-import { Expense } from "../expense";
+import { ExpenseType } from "../inintialType";
 
 export type Actions =
   | { type: "DELETE_TRANSACTION"; payload: number }
   | {
       type: "ADD_TRANSACTION";
-      payload: Expense;
+      payload: ExpenseType;
     }
   | {
       type: "GET_TRANSACTION";
-      payload: Expense[];
+      payload: ExpenseType[];
+    }
+  | {
+      type: "DISPLAY_ALERT";
     };

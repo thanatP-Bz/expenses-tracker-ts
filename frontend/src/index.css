@@ -102,7 +102,7 @@ input:focus {
 
 .btn {
   cursor: pointer;
-  background-color: #e9345b;
+  background-color: #eb5777;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;

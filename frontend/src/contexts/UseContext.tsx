@@ -11,8 +11,12 @@ type UseContextProviderType = {
 const AppContextProvider = ({ children }: UseContextProviderType) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const displayAlert = () => {
+    dispatch({ type: "DISPLAY_ALERT" });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, dispatch }}>
+    <AppContext.Provider value={{ ...state, dispatch, displayAlert }}>
       {children}
     </AppContext.Provider>
   );
