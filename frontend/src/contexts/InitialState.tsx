@@ -14,6 +14,7 @@ export type InitialState = {
     amount: number;
   }) => void;
   displayAlert: () => void;
+  clearAlert: () => void;
 };
 
 export const initialState: InitialState = {
@@ -27,4 +28,5 @@ export const initialState: InitialState = {
   deleteTransaction: () => void {},
   addTransaction: () => void {},
   displayAlert: () => void {},
+  clearAlert: () => void {},
 };

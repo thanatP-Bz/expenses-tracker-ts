@@ -12,4 +12,7 @@ export type Actions =
     }
   | {
       type: "DISPLAY_ALERT";
+    }
+  | {
+      type: "CLEAR_ALERT";
     };

@@ -13,10 +13,19 @@ const AppContextProvider = ({ children }: UseContextProviderType) => {
 
   const displayAlert = () => {
     dispatch({ type: "DISPLAY_ALERT" });
+    clearAlert();
+  };
+
+  const clearAlert = () => {
+    setTimeout(() => {
+      dispatch({ type: "CLEAR_ALERT" });
+    }, 3000);
   };
 
   return (
-    <AppContext.Provider value={{ ...state, dispatch, displayAlert }}>
+    <AppContext.Provider
+      value={{ ...state, dispatch, displayAlert, clearAlert }}
+    >
       {children}
     </AppContext.Provider>
   );

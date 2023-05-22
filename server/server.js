@@ -13,7 +13,7 @@ client.connect();
 const PORT = 8000;
 
 app.get("/", async (req, res) => {
-  const userEmail = "bz12@gmail.com";
+  const userEmail = "bz@gmail.com";
 
   try {
     const response = await client.query(

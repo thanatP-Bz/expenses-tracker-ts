@@ -15,7 +15,7 @@ const initialState: LoginType = {
 function Login() {
   const [values, setValues] = useState(initialState);
 
-  const { alert, displayAlert } = useAppContext();
+  const { displayAlert } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -65,6 +65,7 @@ function Login() {
           onChange={onChangeHandler}
           value={values.email}
         />
+
         <FormRow
           type="password"
           placeholder="password"
@@ -77,7 +78,6 @@ function Login() {
           submit
         </button>
         <p className="text-center">
-          or{" "}
           <button
             type="button"
             className="text-blue-400"

@@ -31,6 +31,16 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
           showAlert: true,
         },
       };
+    case "CLEAR_ALERT":
+      return {
+        ...state,
+        alert: {
+          ...state,
+          alertText: "",
+          alertType: "",
+          showAlert: false,
+        },
+      };
 
     default:
       return state;
