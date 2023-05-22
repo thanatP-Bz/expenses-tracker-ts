@@ -3,7 +3,7 @@ interface Props {
   name: string;
   placeholder: string;
   value: string | number;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FormRow = ({ type, name, placeholder, value, onChange }: Props) => {

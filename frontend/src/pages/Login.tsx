@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LoginType } from "../login";
+import { useAppContext } from "../hooks/UseAppContext";
 import Alert from "../components/Alert";
 import FormRow from "../components/FormRow";
 
@@ -14,16 +15,27 @@ const initialState: LoginType = {
 function Login() {
   const [values, setValues] = useState(initialState);
 
+  const { alert, displayAlert } = useAppContext();
+
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const { name, email, password, isMember } = values;
+
+    if ((!email && !password) || (!name && !isMember)) {
+      displayAlert();
+      return;
+    }
+
+    console.log(values);
   };
 
-  const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log();
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
@@ -54,7 +66,7 @@ function Login() {
           value={values.email}
         />
         <FormRow
-          type="text"
+          type="password"
           placeholder="password"
           name="password"
           onChange={onChangeHandler}
