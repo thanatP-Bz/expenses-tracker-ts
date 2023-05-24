@@ -3,6 +3,7 @@ import { LoginType } from "../login";
 import { useAppContext } from "../hooks/UseAppContext";
 import Alert from "../components/Alert";
 import FormRow from "../components/FormRow";
+import { UseRegisterHook } from "../hooks/UseRegisterHook";
 
 const initialState: LoginType = {
   name: "",
@@ -16,6 +17,8 @@ function Login() {
   const [values, setValues] = useState(initialState);
 
   const { displayAlert } = useAppContext();
+
+  const { register } = UseRegisterHook();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -31,7 +34,13 @@ function Login() {
       return;
     }
 
-    console.log(values);
+    const currentUser = { name, email, password };
+
+    if (isMember) {
+      console.log("already a member");
+    } else {
+      register(currentUser);
+    }
   };
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,11 +53,11 @@ function Login() {
       <form onSubmit={onSubmitHandler} className="login-form">
         <div className="pb-4 text-2xl">
           <h2 className="text-gray-500">
-            {values.isMember ? "Register" : "Login"}
+            {values.isMember ? "Login" : "Register"}
           </h2>
         </div>
 
-        {values.isMember && (
+        {!values.isMember && (
           <FormRow
             type="text"
             placeholder="name"

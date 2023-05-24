@@ -15,6 +15,11 @@ export type InitialState = {
   }) => void;
   displayAlert: () => void;
   clearAlert: () => void;
+  registerUser: (currentUser: {
+    name: string;
+    email: string | number;
+    password: string | number;
+  }) => void;
 };
 
 export const initialState: InitialState = {
@@ -29,4 +34,5 @@ export const initialState: InitialState = {
   addTransaction: () => void {},
   displayAlert: () => void {},
   clearAlert: () => void {},
+  registerUser: () => void {},
 };

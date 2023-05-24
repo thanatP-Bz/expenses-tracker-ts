@@ -15,4 +15,7 @@ export type Actions =
     }
   | {
       type: "CLEAR_ALERT";
+    }
+  | {
+      type: "REGISTER_USER";
     };
