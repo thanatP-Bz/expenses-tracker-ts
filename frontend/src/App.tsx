@@ -1,13 +1,10 @@
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
     <>
-      {/*  <Register /> */}
-      <Login />
-
-      {/*      <HomePage /> */}
+      <Auth />
     </>
   );
 }

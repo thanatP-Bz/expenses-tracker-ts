@@ -41,6 +41,8 @@ function Login() {
     } else {
       register(currentUser);
     }
+
+    setValues({ ...values, name: "", email: "", password: "" });
   };
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
