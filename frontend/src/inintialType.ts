@@ -4,7 +4,9 @@ export type ExpenseType = {
   amount: number;
 };
 
-export type AlertType = {
+export type AuthenticationType = {
+  user: string;
+  token: string;
   alertType: string;
   alertText: string;
   showAlert: boolean;

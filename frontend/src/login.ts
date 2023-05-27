@@ -1,7 +1,7 @@
 export type LoginType = {
   name: string;
   email: string;
-  password: string | number;
+  password: string;
   isMember: boolean;
   showAlert: boolean;
 };

@@ -1,5 +1,5 @@
 import { ExpenseType } from "../inintialType";
-
+import { AuthenticationType } from "../inintialType";
 export type Actions =
   | { type: "DELETE_TRANSACTION"; payload: number }
   | {
@@ -17,5 +17,10 @@ export type Actions =
       type: "CLEAR_ALERT";
     }
   | {
-      type: "REGISTER_USER";
+      type: "REGISTER_USER_SUCCESS";
+      payload: AuthenticationType;
+    }
+  | {
+      type: "REGISTER_USER_ERROR";
+      payload: { message: string };
     };

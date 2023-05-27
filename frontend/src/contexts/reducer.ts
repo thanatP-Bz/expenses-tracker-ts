@@ -20,12 +20,15 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         ...state,
         transactions: action.payload,
       };
+
     //display alert
     case "DISPLAY_ALERT":
       return {
         ...state,
-        alert: {
+        authentication: {
           ...state,
+          user: "",
+          token: "",
           alertText: "Please provide all values",
           alertType: "danger",
           showAlert: true,
@@ -34,11 +37,39 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
     case "CLEAR_ALERT":
       return {
         ...state,
-        alert: {
+        authentication: {
           ...state,
+          user: "",
+          token: "",
           alertText: "",
           alertType: "",
           showAlert: false,
+        },
+      };
+
+    //register
+    case "REGISTER_USER_SUCCESS":
+      return {
+        ...state,
+        authentication: {
+          ...state,
+          user: action.payload.user,
+          token: action.payload.token,
+          alertText: "Register successfully please wait...",
+          alertType: "success",
+          showAlert: true,
+        },
+      };
+    case "REGISTER_USER_ERROR":
+      return {
+        ...state,
+        authentication: {
+          ...state,
+          user: "",
+          token: "",
+          alertText: action.payload.message,
+          alertType: "danger",
+          showAlert: true,
         },
       };
 

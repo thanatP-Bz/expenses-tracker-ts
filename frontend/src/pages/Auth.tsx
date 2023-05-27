@@ -34,15 +34,21 @@ function Login() {
       return;
     }
 
-    const currentUser = { name, email, password };
+    type CurrentUserType = {
+      name: string;
+      email: string;
+      password: string;
+    };
+
+    const currentUser: CurrentUserType = { name, email, password };
 
     if (isMember) {
       console.log("already a member");
     } else {
       register(currentUser);
     }
-
-    setValues({ ...values, name: "", email: "", password: "" });
+    /* 
+    setValues({ ...values, name: "", email: "", password: "" }); */
   };
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
