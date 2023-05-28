@@ -16,13 +16,13 @@ app.use(bodyParser.json());
 
 const PORT = 8000;
 
-app.get("/", async (req, res) => {
+/* app.get("/", async (req, res) => {
   res.json({ message: "helllo server!" });
-});
+}); */
 
 //register
 app.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, lastName } = req.body;
   /* const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   
@@ -46,7 +46,8 @@ app.post("/register", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "something went wrong" });
   } */
-  console.log(password);
+  res.json({ name, email, lastName });
+  console.log(name, email, lastName);
 });
 
 app.listen(PORT, () => {

@@ -7,6 +7,7 @@ import { UseRegisterHook } from "../hooks/UseRegisterHook";
 
 const initialState: LoginType = {
   name: "",
+  lastName: "",
   email: "",
   password: "",
   isMember: false,
@@ -27,7 +28,7 @@ function Login() {
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { name, email, password, isMember } = values;
+    const { name, lastName, email, password, isMember } = values;
 
     if ((!email && !password) || (!name && !isMember)) {
       displayAlert();
@@ -36,11 +37,12 @@ function Login() {
 
     type CurrentUserType = {
       name: string;
+      lastName: string;
       email: string;
       password: string;
     };
 
-    const currentUser: CurrentUserType = { name, email, password };
+    const currentUser: CurrentUserType = { name, lastName, email, password };
 
     if (isMember) {
       console.log("already a member");
@@ -76,20 +78,28 @@ function Login() {
         )}
 
         <FormRow
+          type="text"
+          placeholder="lastname"
+          name="lastName"
+          onChange={onChangeHandler}
+          value={values.lastName}
+        />
+
+        <FormRow
           type="email"
           placeholder="email"
           name="email"
           onChange={onChangeHandler}
           value={values.email}
         />
-
+        {/* 
         <FormRow
           type="password"
           placeholder="password"
           name="password"
           onChange={onChangeHandler}
           value={values.password}
-        />
+        /> */}
 
         <button type="submit" className="btn">
           submit
