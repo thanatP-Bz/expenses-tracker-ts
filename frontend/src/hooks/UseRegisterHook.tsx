@@ -6,30 +6,28 @@ export const UseRegisterHook = () => {
 
   type CurrentUserType = {
     name: string;
-    lastName: string;
-    email: string;
     password: string;
+    email: string;
   };
 
   const register = async (currentUser: CurrentUserType) => {
-    const values = {
-      name: currentUser.name,
-      lastName: currentUser.lastName,
-      email: currentUser.email,
-    };
-
-    console.log(values);
+    const { name, password, email } = currentUser;
 
     try {
       const response = await axios.post(
         "http://localhost:8000/register",
-        values,
+        { name, password, email },
         {
           headers: { "Content-Type": "application/json" },
         }
       );
 
       const data = response.data;
+
+      type response = {
+        user: string;
+        token: string;
+      };
     } catch (e) {
       const error = e as AxiosError;
 

@@ -11,7 +11,7 @@ const app = express();
 
 //middleware
 app.use(cors());
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const PORT = 8000;
@@ -22,7 +22,7 @@ const PORT = 8000;
 
 //register
 app.post("/register", async (req, res) => {
-  const { name, email, lastName } = req.body;
+  const { name, password, email } = req.body;
   /* const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   
@@ -46,8 +46,8 @@ app.post("/register", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "something went wrong" });
   } */
-  res.json({ name, email, lastName });
-  console.log(name, email, lastName);
+  res.json({ name });
+  console.log(name, email, password);
 });
 
 app.listen(PORT, () => {
