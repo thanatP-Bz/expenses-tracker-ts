@@ -9,7 +9,7 @@ const initialState: LoginType = {
   name: "",
   password: "",
   email: "",
-  isMember: false,
+  isMember: true,
   showAlert: true,
 };
 
@@ -29,7 +29,7 @@ function Login() {
 
     const { name, password, email, isMember } = values;
 
-    if (!email || (!name && !isMember)) {
+    if ((!email && !password) || (!name && !isMember)) {
       displayAlert();
       return;
     }
@@ -76,19 +76,19 @@ function Login() {
         )}
 
         <FormRow
-          type="password"
-          placeholder="password"
-          name="password"
-          onChange={onChangeHandler}
-          value={values.password}
-        />
-
-        <FormRow
           type="email"
           placeholder="email"
           name="email"
           onChange={onChangeHandler}
           value={values.email}
+        />
+
+        <FormRow
+          type="password"
+          placeholder="password"
+          name="password"
+          onChange={onChangeHandler}
+          value={values.password}
         />
 
         <button type="submit" className="btn">
@@ -100,7 +100,7 @@ function Login() {
             className="text-blue-400"
             onClick={toggleMember}
           >
-            {values.isMember ? "Login" : "Register"}
+            {values.isMember ? "Register" : "Login"}
           </button>
         </p>
       </form>

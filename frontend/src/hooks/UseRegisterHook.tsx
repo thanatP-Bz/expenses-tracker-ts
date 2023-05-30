@@ -11,23 +11,24 @@ export const UseRegisterHook = () => {
   };
 
   const register = async (currentUser: CurrentUserType) => {
-    const { name, password, email } = currentUser;
+    const values = {
+      name: currentUser.name,
+      password: currentUser.password,
+      email: currentUser.email,
+    };
 
     try {
       const response = await axios.post(
         "http://localhost:8000/register",
-        { name, password, email },
+        values,
         {
           headers: { "Content-Type": "application/json" },
         }
       );
 
       const data = response.data;
-
-      type response = {
-        user: string;
-        token: string;
-      };
+      const { name, token, password } = data;
+      console.log(name, token, password);
     } catch (e) {
       const error = e as AxiosError;
 

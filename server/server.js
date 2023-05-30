@@ -16,16 +16,16 @@ app.use(bodyParser.json());
 
 const PORT = 8000;
 
-/* app.get("/", async (req, res) => {
+app.get("/", async (req, res) => {
   res.json({ message: "helllo server!" });
-}); */
+});
 
 //register
 app.post("/register", async (req, res) => {
   const { name, password, email } = req.body;
-  /* const salt = await bcrypt.genSalt(10);
+  const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-  
+
   try {
     const user = await client.query(
       `SELECT * FROM "user" WHERE user_email = $1`,
@@ -38,16 +38,13 @@ app.post("/register", async (req, res) => {
         `INSERT INTO "user"(user_name, user_email, user_password) VALUES ($1, $2, $3)`,
         [name, email, hashedPassword]
       );
-
       const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
-
-      res.json({ email, token });
+      res.json({ name, token, password });
     }
+    console.log(password);
   } catch (error) {
     res.status(500).json({ message: "something went wrong" });
-  } */
-  res.json({ name });
-  console.log(name, email, password);
+  }
 });
 
 app.listen(PORT, () => {
