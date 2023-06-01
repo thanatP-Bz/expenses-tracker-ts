@@ -17,15 +17,15 @@ export type InitialState = {
   clearAlert: () => void;
   registerUser: (currentUser: {
     name: string;
-    email: string | number;
-    password: string | number;
+    email: string;
+    password: string;
   }) => void;
 };
 
 export const initialState: InitialState = {
   transactions: [],
   authentication: {
-    user: "",
+    name: "",
     token: "",
     alertText: "",
     alertType: "",

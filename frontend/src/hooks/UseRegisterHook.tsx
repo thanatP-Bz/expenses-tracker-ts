@@ -27,8 +27,13 @@ export const UseRegisterHook = () => {
       );
 
       const data = response.data;
-      const { name, token, password } = data;
-      console.log(name, token, password);
+      const { name, token } = data;
+
+      dispatch({
+        type: "REGISTER_USER_SUCCESS",
+        payload: { name, token },
+      });
+      clearAlert();
     } catch (e) {
       const error = e as AxiosError;
 

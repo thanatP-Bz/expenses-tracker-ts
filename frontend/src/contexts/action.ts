@@ -18,7 +18,7 @@ export type Actions =
     }
   | {
       type: "REGISTER_USER_SUCCESS";
-      payload: AuthenticationType;
+      payload: { name: string; token: string };
     }
   | {
       type: "REGISTER_USER_ERROR";

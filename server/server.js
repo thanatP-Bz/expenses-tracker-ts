@@ -41,7 +41,6 @@ app.post("/register", async (req, res) => {
       const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
       res.json({ name, token, password });
     }
-    console.log(password);
   } catch (error) {
     res.status(500).json({ message: "something went wrong" });
   }

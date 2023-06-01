@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LoginType } from "../login";
 import { useAppContext } from "../hooks/UseAppContext";
 import Alert from "../components/Alert";
@@ -14,16 +15,21 @@ const initialState: LoginType = {
 };
 
 function Login() {
+  //useNavigate
+  const navigate = useNavigate();
+  //initial values
   const [values, setValues] = useState(initialState);
-
-  const { displayAlert } = useAppContext();
-
+  //global state
+  const { authentication, displayAlert } = useAppContext();
+  //hooks
   const { register } = UseRegisterHook();
 
+  //toggle Member
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
+  //form event
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -34,26 +40,29 @@ function Login() {
       return;
     }
 
-    type CurrentUserType = {
-      name: string;
-      password: string;
-      email: string;
-    };
-
-    const currentUser: CurrentUserType = { name, password, email };
+    const currentUser = { name, password, email };
 
     if (isMember) {
       console.log("already a member");
     } else {
       register(currentUser);
     }
-    /* 
-    setValues({ ...values, name: "", email: "", password: "" }); */
+
+    setValues({ ...values, name: "", email: "", password: "" });
   };
 
+  //onChange Event
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    if (authentication.name) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [authentication.name, navigate]);
 
   return (
     <div className="container">
