@@ -1,5 +1,5 @@
 import { ExpenseType } from "../inintialType";
-import { AuthenticationType } from "../inintialType";
+
 export type Actions =
   | { type: "DELETE_TRANSACTION"; payload: number }
   | {
@@ -22,5 +22,13 @@ export type Actions =
     }
   | {
       type: "REGISTER_USER_ERROR";
+      payload: { message: string };
+    }
+  | {
+      type: "LOGIN_USER_SUCCESS";
+      payload: { name: string; token: string };
+    }
+  | {
+      type: "LOGIN_USER_ERROR";
       payload: { message: string };
     };

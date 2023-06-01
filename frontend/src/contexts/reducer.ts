@@ -72,6 +72,31 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
           showAlert: true,
         },
       };
+    //login
+    case "LOGIN_USER_SUCCESS":
+      return {
+        ...state,
+        authentication: {
+          ...state,
+          name: "",
+          token: "",
+          alertText: "Login successfully please wait...",
+          alertType: "success",
+          showAlert: true,
+        },
+      };
+    case "LOGIN_USER_ERROR":
+      return {
+        ...state,
+        authentication: {
+          ...state,
+          name: "",
+          token: "",
+          alertText: action.payload.message,
+          alertType: "danger",
+          showAlert: true,
+        },
+      };
 
     default:
       return state;

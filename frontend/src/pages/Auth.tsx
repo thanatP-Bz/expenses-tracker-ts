@@ -5,6 +5,7 @@ import { useAppContext } from "../hooks/UseAppContext";
 import Alert from "../components/Alert";
 import FormRow from "../components/FormRow";
 import { UseRegisterHook } from "../hooks/UseRegisterHook";
+import { UseLoginHook } from "../hooks/UseLoginHook";
 
 const initialState: LoginType = {
   name: "",
@@ -23,6 +24,7 @@ function Login() {
   const { authentication, displayAlert } = useAppContext();
   //hooks
   const { register } = UseRegisterHook();
+  const { login } = UseLoginHook();
 
   //toggle Member
   const toggleMember = () => {
@@ -43,7 +45,7 @@ function Login() {
     const currentUser = { name, password, email };
 
     if (isMember) {
-      console.log("already a member");
+      login(currentUser);
     } else {
       register(currentUser);
     }

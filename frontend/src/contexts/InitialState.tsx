@@ -20,6 +20,7 @@ export type InitialState = {
     email: string;
     password: string;
   }) => void;
+  loginUser: (currentUser: { email: string; password: string }) => void;
 };
 
 export const initialState: InitialState = {
@@ -37,4 +38,5 @@ export const initialState: InitialState = {
   displayAlert: () => void {},
   clearAlert: () => void {},
   registerUser: () => void {},
+  loginUser: () => void {},
 };
