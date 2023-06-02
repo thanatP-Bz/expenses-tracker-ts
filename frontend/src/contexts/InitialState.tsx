@@ -3,6 +3,11 @@ import { ExpenseType } from "../inintialType";
 import { AuthenticationType } from "../inintialType";
 import { Actions } from "./action";
 
+//get data from localstorage
+const email = localStorage.getItem("email");
+const userName = localStorage.getItem("name");
+const token = localStorage.getItem("token");
+
 export type InitialState = {
   transactions: ExpenseType[];
   authentication: AuthenticationType;
@@ -26,9 +31,9 @@ export type InitialState = {
 export const initialState: InitialState = {
   transactions: [],
   authentication: {
-    name: "",
-    email: "",
-    token: "",
+    name: userName ? JSON.stringify("name") : "",
+    email: email ? JSON.stringify("email") : "",
+    token: token ? token : "",
     alertText: "",
     alertType: "",
     showAlert: false,

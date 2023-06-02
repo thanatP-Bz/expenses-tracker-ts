@@ -4,11 +4,11 @@ import { reducer } from "./reducer";
 
 const AppContext = createContext(initialState);
 
-type UseContextProviderType = {
+type Children = {
   children: ReactNode;
 };
 
-const AppContextProvider = ({ children }: UseContextProviderType) => {
+const AppContextProvider = ({ children }: Children) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const displayAlert = () => {

@@ -1,5 +1,6 @@
 import { useAppContext } from "./UseAppContext";
 import axios, { AxiosError } from "axios";
+import { addUserToLocalStorageLogin } from "../localStorage";
 
 export const UseLoginHook = () => {
   const { dispatch, clearAlert } = useAppContext();
@@ -21,12 +22,16 @@ export const UseLoginHook = () => {
       });
 
       const data = response.data;
-      const { email, token } = data;
+      const { userName, email, token } = data;
 
       dispatch({
         type: "LOGIN_USER_SUCCESS",
-        payload: { email: email, token },
+        payload: { userName: userName, email: email, token },
       });
+
+      //add to localStorage
+      addUserToLocalStorageLogin({ userName, email, token });
+
       clearAlert();
     } catch (e) {
       const error = e as AxiosError;

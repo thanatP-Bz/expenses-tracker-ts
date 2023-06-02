@@ -1,5 +1,6 @@
 import { useAppContext } from "./UseAppContext";
 import axios, { AxiosError } from "axios";
+import { addUserToLocalStorageRegister } from "../localStorage";
 
 export const UseRegisterHook = () => {
   const { dispatch, clearAlert } = useAppContext();
@@ -27,11 +28,14 @@ export const UseRegisterHook = () => {
       );
 
       const data = response.data;
-      const { name, token } = data;
+      const { userName, token } = data;
+
+      //add to localStorage
+      addUserToLocalStorageRegister({ userName, token });
 
       dispatch({
         type: "REGISTER_USER_SUCCESS",
-        payload: { name, token },
+        payload: { userName, token },
       });
       clearAlert();
     } catch (e) {

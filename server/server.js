@@ -40,7 +40,7 @@ app.post("/register", async (req, res) => {
         [name, email, hashedPassword]
       );
       const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
-      res.json({ name, token, password });
+      res.json({ userName: register.rows[0].user_name, token });
     }
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json("something went wrong");
@@ -65,9 +65,11 @@ app.post("/login", async (req, res) => {
     const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
 
     if (success) {
-      res
-        .status(StatusCodes.OK)
-        .json({ email: user.rows[0].user_email, token });
+      res.status(StatusCodes.OK).json({
+        userName: user.rows[0].user_name,
+        email: user.rows[0].user_email,
+        token,
+      });
     } else {
       res
         .status(StatusCodes.UNAUTHORIZED)
@@ -79,7 +81,6 @@ app.post("/login", async (req, res) => {
       .json("something went wrong please try again");
     console.log(error);
   }
-  console.log(password);
 });
 
 app.listen(PORT, () => {

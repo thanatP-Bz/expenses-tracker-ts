@@ -55,7 +55,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         ...state,
         authentication: {
           ...state,
-          name: action.payload.name,
+          name: action.payload.userName,
           email: "",
           token: action.payload.token,
           alertText: "Register successfully please wait...",
@@ -82,7 +82,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         ...state,
         authentication: {
           ...state,
-          name: "",
+          name: action.payload.userName,
           email: action.payload.email,
           token: action.payload.token,
           alertText: "Login successfully please wait...",
