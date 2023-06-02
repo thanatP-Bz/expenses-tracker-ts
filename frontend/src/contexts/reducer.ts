@@ -28,6 +28,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         authentication: {
           ...state,
           name: "",
+          email: "",
           token: "",
           alertText: "Please provide all values",
           alertType: "danger",
@@ -40,6 +41,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         authentication: {
           ...state,
           name: "",
+          email: "",
           token: "",
           alertText: "",
           alertType: "",
@@ -54,6 +56,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         authentication: {
           ...state,
           name: action.payload.name,
+          email: "",
           token: action.payload.token,
           alertText: "Register successfully please wait...",
           alertType: "success",
@@ -66,6 +69,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         authentication: {
           ...state,
           name: "",
+          email: "",
           token: "",
           alertText: action.payload.message,
           alertType: "danger",
@@ -79,7 +83,8 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         authentication: {
           ...state,
           name: "",
-          token: "",
+          email: action.payload.email,
+          token: action.payload.token,
           alertText: "Login successfully please wait...",
           alertType: "success",
           showAlert: true,
@@ -91,6 +96,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
         authentication: {
           ...state,
           name: "",
+          email: "",
           token: "",
           alertText: action.payload.message,
           alertType: "danger",

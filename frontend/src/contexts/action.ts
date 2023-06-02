@@ -26,7 +26,7 @@ export type Actions =
     }
   | {
       type: "LOGIN_USER_SUCCESS";
-      payload: { name: string; token: string };
+      payload: { email: string; token: string };
     }
   | {
       type: "LOGIN_USER_ERROR";

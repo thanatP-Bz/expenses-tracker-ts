@@ -56,30 +56,30 @@ app.post("/login", async (req, res) => {
       `SELECT * FROM "user" WHERE user_email = $1`,
       [email]
     );
-    console.log(user);
 
-    /* if (!user.rows.length)
-      return res
-        .status(StatusCodes.BAD_REQUEST)
-        .json({ message: "User does not exist!" });
+    if (!user.rows.length)
+      return res.status(StatusCodes.BAD_REQUEST).json("User does not exist!");
 
-        const success = await bcrypt.compare(
-      password,
-      user.rows.length[0].user_password
-    );
+    const success = await bcrypt.compare(password, user.rows[0].user_password);
+    console.log(success);
     const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
 
     if (success) {
-      res.status(StatusCodes.OK).json(user.rows[0].user_email, token);
+      res
+        .status(StatusCodes.OK)
+        .json({ email: user.rows[0].user_email, token });
     } else {
-      res.status(StatusCodes.UNAUTHORIZED).json("password does not match");
-    } */
+      res
+        .status(StatusCodes.UNAUTHORIZED)
+        .json("password does not match please try again");
+    }
   } catch (error) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json("something went wrong please try again");
     console.log(error);
   }
+  console.log(password);
 });
 
 app.listen(PORT, () => {

@@ -7,6 +7,7 @@ export type ExpenseType = {
 export type AuthenticationType = {
   name: string;
   token: string;
+  email: string;
   alertType: string;
   alertText: string;
   showAlert: boolean;

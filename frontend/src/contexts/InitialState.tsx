@@ -27,6 +27,7 @@ export const initialState: InitialState = {
   transactions: [],
   authentication: {
     name: "",
+    email: "",
     token: "",
     alertText: "",
     alertType: "",

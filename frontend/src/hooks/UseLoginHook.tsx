@@ -21,11 +21,11 @@ export const UseLoginHook = () => {
       });
 
       const data = response.data;
-      const { name, token } = data;
+      const { email, token } = data;
 
       dispatch({
         type: "LOGIN_USER_SUCCESS",
-        payload: { name, token },
+        payload: { email: email, token },
       });
       clearAlert();
     } catch (e) {
