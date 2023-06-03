@@ -5,7 +5,7 @@ import { Actions } from "./action";
 
 //get data from localstorage
 const email = localStorage.getItem("email");
-const userName = localStorage.getItem("name");
+const userName = localStorage.getItem("userName");
 const token = localStorage.getItem("token");
 
 export type InitialState = {
@@ -21,7 +21,7 @@ export type InitialState = {
   displayAlert: () => void;
   clearAlert: () => void;
   registerUser: (currentUser: {
-    name: string;
+    name: null;
     email: string;
     password: string;
   }) => void;
@@ -31,7 +31,7 @@ export type InitialState = {
 export const initialState: InitialState = {
   transactions: [],
   authentication: {
-    name: userName ? JSON.stringify("name") : "",
+    userName: (userName as string) ? userName : null,
     email: email ? JSON.stringify("email") : "",
     token: token ? token : "",
     alertText: "",

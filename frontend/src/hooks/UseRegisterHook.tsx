@@ -6,14 +6,14 @@ export const UseRegisterHook = () => {
   const { dispatch, clearAlert } = useAppContext();
 
   type CurrentUserType = {
-    name: string;
+    userName: string;
     password: string;
     email: string;
   };
 
   const register = async (currentUser: CurrentUserType) => {
     const values = {
-      name: currentUser.name,
+      userName: currentUser.userName,
       password: currentUser.password,
       email: currentUser.email,
     };

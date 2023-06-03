@@ -26,8 +26,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       return {
         ...state,
         authentication: {
-          ...state,
-          name: "",
+          userName: null,
           email: "",
           token: "",
           alertText: "Please provide all values",
@@ -39,8 +38,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       return {
         ...state,
         authentication: {
-          ...state,
-          name: "",
+          userName: null,
           email: "",
           token: "",
           alertText: "",
@@ -54,8 +52,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       return {
         ...state,
         authentication: {
-          ...state,
-          name: action.payload.userName,
+          userName: action.payload.userName,
           email: "",
           token: action.payload.token,
           alertText: "Register successfully please wait...",
@@ -67,8 +64,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       return {
         ...state,
         authentication: {
-          ...state,
-          name: "",
+          userName: null,
           email: "",
           token: "",
           alertText: action.payload.message,
@@ -81,8 +77,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       return {
         ...state,
         authentication: {
-          ...state,
-          name: action.payload.userName,
+          userName: action.payload.userName,
           email: action.payload.email,
           token: action.payload.token,
           alertText: "Login successfully please wait...",
@@ -94,8 +89,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
       return {
         ...state,
         authentication: {
-          ...state,
-          name: "",
+          userName: null,
           email: "",
           token: "",
           alertText: action.payload.message,

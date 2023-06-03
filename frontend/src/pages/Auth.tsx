@@ -8,7 +8,7 @@ import { UseRegisterHook } from "../hooks/UseRegisterHook";
 import { UseLoginHook } from "../hooks/UseLoginHook";
 
 const initialState: LoginType = {
-  name: "",
+  userName: "",
   password: "",
   email: "",
   isMember: true,
@@ -35,14 +35,14 @@ function Login() {
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { name, password, email, isMember } = values;
+    const { userName, password, email, isMember } = values;
 
-    if ((!email && !password) || (!name && !isMember)) {
+    if ((!email && !password) || (!userName && !isMember)) {
       displayAlert();
       return;
     }
 
-    const currentUser = { name, password, email };
+    const currentUser = { userName, password, email };
 
     if (isMember) {
       login(currentUser);
@@ -50,7 +50,7 @@ function Login() {
       register(currentUser);
     }
 
-    setValues({ ...values, name: "", email: "", password: "" });
+    setValues({ ...values, userName: "", email: "", password: "" });
   };
 
   //onChange Event
@@ -59,12 +59,12 @@ function Login() {
   };
 
   useEffect(() => {
-    if (authentication.name) {
+    if (authentication.userName) {
       setTimeout(() => {
         navigate("/");
       }, 3000);
     }
-  }, [authentication.name, navigate]);
+  }, [authentication.userName, navigate]);
 
   return (
     <div className="container">
@@ -80,9 +80,9 @@ function Login() {
           <FormRow
             type="text"
             placeholder="name"
-            name="name"
+            name="userName"
             onChange={onChangeHandler}
-            value={values.name}
+            value={values.userName}
           />
         )}
 
@@ -107,7 +107,7 @@ function Login() {
         </button>
         <p className="text-center">
           <button
-            type="button"
+            type="submit"
             className="text-blue-400"
             onClick={toggleMember}
           >

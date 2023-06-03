@@ -1,9 +1,10 @@
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ProtectRoutes } from "./pages/ProtectRoutes";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAppContext } from "./hooks/UseAppContext";
 
 function App() {
+  const { authentication } = useAppContext();
   return (
     <>
       <BrowserRouter>
@@ -13,9 +14,7 @@ function App() {
           <Route
             path="/"
             element={
-              <ProtectRoutes>
-                <Home />
-              </ProtectRoutes>
+              authentication.userName ? <Home /> : <Navigate to="/auth" />
             }
           />
         </Routes>

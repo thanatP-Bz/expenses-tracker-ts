@@ -18,7 +18,7 @@ export type Actions =
     }
   | {
       type: "REGISTER_USER_SUCCESS";
-      payload: { userName: string; token: string };
+      payload: { userName: null; token: string };
     }
   | {
       type: "REGISTER_USER_ERROR";
@@ -26,7 +26,7 @@ export type Actions =
     }
   | {
       type: "LOGIN_USER_SUCCESS";
-      payload: { userName: string; email: string; token: string };
+      payload: { userName: null; email: string; token: string };
     }
   | {
       type: "LOGIN_USER_ERROR";

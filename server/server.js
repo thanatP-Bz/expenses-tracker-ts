@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
 
 //register
 app.post("/register", async (req, res) => {
-  const { name, password, email } = req.body;
+  const { userName, password, email } = req.body;
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -37,13 +37,14 @@ app.post("/register", async (req, res) => {
     } else {
       const register = await client.query(
         `INSERT INTO "user"(user_name, user_email, user_password) VALUES ($1, $2, $3)`,
-        [name, email, hashedPassword]
+        [userName, email, hashedPassword]
       );
       const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
-      res.json({ userName: register.rows[0].user_name, token });
+      res.json({ userName, token });
     }
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json("something went wrong");
+    console.log(error);
   }
 });
 
@@ -61,7 +62,7 @@ app.post("/login", async (req, res) => {
       return res.status(StatusCodes.BAD_REQUEST).json("User does not exist!");
 
     const success = await bcrypt.compare(password, user.rows[0].user_password);
-    console.log(success);
+
     const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
 
     if (success) {

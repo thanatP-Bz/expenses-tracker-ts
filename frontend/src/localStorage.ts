@@ -17,8 +17,8 @@ export const addUserToLocalStorageRegister = (
     token: currentUser.token,
   };
 
-  localStorage.setItem("name", JSON.stringify(values.userName));
-  localStorage.setItem("token", JSON.stringify(values.token));
+  localStorage.setItem("userName", values.userName);
+  localStorage.setItem("token", values.token);
 };
 
 export const addUserToLocalStorageLogin = (currentUser: CurrentUserLogin) => {
@@ -28,9 +28,9 @@ export const addUserToLocalStorageLogin = (currentUser: CurrentUserLogin) => {
     token: currentUser.token,
   };
 
-  localStorage.setItem("userName", JSON.stringify(values.userName));
+  localStorage.setItem("userName", values.userName);
   localStorage.setItem("email", JSON.stringify(values.email));
-  localStorage.setItem("token", JSON.stringify(values.token));
+  localStorage.setItem("token", values.token);
 };
 
 export const removeUserToLocalStorage = () => {
