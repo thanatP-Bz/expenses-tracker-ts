@@ -25,10 +25,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
     case "DISPLAY_ALERT":
       return {
         ...state,
-        authentication: {
-          userName: null,
-          email: "",
-          token: "",
+        alert: {
           alertText: "Please provide all values",
           alertType: "danger",
           showAlert: true,
@@ -37,10 +34,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
     case "CLEAR_ALERT":
       return {
         ...state,
-        authentication: {
-          userName: null,
-          email: "",
-          token: "",
+        alert: {
           alertText: "",
           alertType: "",
           showAlert: false,
@@ -55,6 +49,8 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
           userName: action.payload.userName,
           email: "",
           token: action.payload.token,
+        },
+        alert: {
           alertText: "Register successfully please wait...",
           alertType: "success",
           showAlert: true,
@@ -63,10 +59,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
     case "REGISTER_USER_ERROR":
       return {
         ...state,
-        authentication: {
-          userName: null,
-          email: "",
-          token: "",
+        alert: {
           alertText: action.payload.message,
           alertType: "danger",
           showAlert: true,
@@ -80,6 +73,8 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
           userName: action.payload.userName,
           email: action.payload.email,
           token: action.payload.token,
+        },
+        alert: {
           alertText: "Login successfully please wait...",
           alertType: "success",
           showAlert: true,
@@ -88,10 +83,7 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
     case "LOGIN_USER_ERROR":
       return {
         ...state,
-        authentication: {
-          userName: null,
-          email: "",
-          token: "",
+        alert: {
           alertText: action.payload.message,
           alertType: "danger",
           showAlert: true,

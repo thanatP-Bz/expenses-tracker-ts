@@ -37,6 +37,7 @@ export const UseRegisterHook = () => {
         type: "REGISTER_USER_SUCCESS",
         payload: { userName, token },
       });
+
       clearAlert();
     } catch (e) {
       const error = e as AxiosError;

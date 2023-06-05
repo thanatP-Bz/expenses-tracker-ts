@@ -1,6 +1,7 @@
 import { Dispatch } from "react";
 import { ExpenseType } from "../inintialType";
 import { AuthenticationType } from "../inintialType";
+import { AlertType } from "../inintialType";
 import { Actions } from "./action";
 
 //get data from localstorage
@@ -11,6 +12,7 @@ const token = localStorage.getItem("token");
 export type InitialState = {
   transactions: ExpenseType[];
   authentication: AuthenticationType;
+  alert: AlertType;
   dispatch: Dispatch<Actions>;
   deleteTransaction: (id: number) => void;
   addTransaction?: (AddTransactionParams: {
@@ -31,11 +33,13 @@ export type InitialState = {
 export const initialState: InitialState = {
   transactions: [],
   authentication: {
-    userName: (userName as string) ? userName : null,
+    userName: userName ? userName : null,
     email: email ? JSON.stringify("email") : "",
     token: token ? token : "",
-    alertText: "",
+  },
+  alert: {
     alertType: "",
+    alertText: "",
     showAlert: false,
   },
   dispatch: () => void {},

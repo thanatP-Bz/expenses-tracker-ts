@@ -5,9 +5,12 @@ export type ExpenseType = {
 };
 
 export type AuthenticationType = {
-  userName: null;
+  userName: string | null;
   token: string;
   email: string;
+};
+
+export type AlertType = {
   alertType: string;
   alertText: string;
   showAlert: boolean;

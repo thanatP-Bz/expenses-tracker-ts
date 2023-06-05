@@ -31,8 +31,6 @@ export const UseLoginHook = () => {
 
       //add to localStorage
       addUserToLocalStorageLogin({ userName, email, token });
-
-      clearAlert();
     } catch (e) {
       const error = e as AxiosError;
       console.log(error);

@@ -1,11 +1,11 @@
 import { useAppContext } from "../hooks/UseAppContext";
 
 const Alert = () => {
-  const { authentication } = useAppContext();
+  const { alert } = useAppContext();
 
   return (
-    <div className={`alert-${authentication.alertType}`}>
-      <p>{authentication.alertText}</p>
+    <div className={`alert-${alert.alertType}`}>
+      <p>{alert.alertText}</p>
     </div>
   );
 };

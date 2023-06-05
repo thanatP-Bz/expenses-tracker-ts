@@ -9,8 +9,6 @@ type Children = {
 export const ProtectRoutes = ({ children }: Children) => {
   const { authentication } = useAppContext();
 
-  console.log(authentication.userName);
-
   if (!authentication.userName) {
     return <Navigate to="/auth" />;
   }
