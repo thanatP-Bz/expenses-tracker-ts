@@ -89,6 +89,20 @@ export const reducer = (state: InitialState, action: Actions): InitialState => {
           showAlert: true,
         },
       };
+    case "LOGOUT_USER":
+      return {
+        ...state,
+        authentication: {
+          userName: null,
+          email: "",
+          token: "",
+        },
+        alert: {
+          alertText: "",
+          alertType: "",
+          showAlert: false,
+        },
+      };
 
     default:
       return state;

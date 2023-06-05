@@ -14,20 +14,8 @@ export type InitialState = {
   authentication: AuthenticationType;
   alert: AlertType;
   dispatch: Dispatch<Actions>;
-  deleteTransaction: (id: number) => void;
-  addTransaction?: (AddTransactionParams: {
-    _id: number;
-    text: string;
-    amount: number;
-  }) => void;
   displayAlert: () => void;
   clearAlert: () => void;
-  registerUser: (currentUser: {
-    name: null;
-    email: string;
-    password: string;
-  }) => void;
-  loginUser: (currentUser: { email: string; password: string }) => void;
 };
 
 export const initialState: InitialState = {
@@ -43,10 +31,6 @@ export const initialState: InitialState = {
     showAlert: false,
   },
   dispatch: () => void {},
-  deleteTransaction: () => void {},
-  addTransaction: () => void {},
   displayAlert: () => void {},
   clearAlert: () => void {},
-  registerUser: () => void {},
-  loginUser: () => void {},
 };

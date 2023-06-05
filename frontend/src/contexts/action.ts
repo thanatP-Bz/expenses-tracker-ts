@@ -31,4 +31,7 @@ export type Actions =
   | {
       type: "LOGIN_USER_ERROR";
       payload: { message: string };
+    }
+  | {
+      type: "LOGOUT_USER";
     };

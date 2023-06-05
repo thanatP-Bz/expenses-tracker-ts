@@ -107,7 +107,7 @@ function Login() {
         </button>
         <p className="text-center">
           <button
-            type="submit"
+            type="button"
             className="text-blue-400"
             onClick={toggleMember}
           >

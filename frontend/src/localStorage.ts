@@ -34,6 +34,7 @@ export const addUserToLocalStorageLogin = (currentUser: CurrentUserLogin) => {
 };
 
 export const removeUserToLocalStorage = () => {
-  localStorage.remove("email");
-  localStorage.remove("token");
+  localStorage.removeItem("userName");
+  localStorage.removeItem("email");
+  localStorage.removeItem("token");
 };
