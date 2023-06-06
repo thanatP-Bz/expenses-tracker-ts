@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
 import { StatusCodes } from "http-status-codes";
+import dotenv from "dotenv";
+dotenv.config();
 
 client.connect();
 
@@ -15,7 +17,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const PORT = 8000;
+const PORT = 8000 || process.env.PORT;
 
 app.get("/", async (req, res) => {
   res.json({ message: "helllo server!" });
@@ -40,7 +42,7 @@ app.post("/register", async (req, res) => {
         [userName, email, hashedPassword]
       );
       const token = jwt.sign({ email }, "secret", { expiresIn: "30d" });
-      res.json({ userName, token });
+      res.status(StatusCodes.CREATED).json({ userName, token });
     }
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json("something went wrong");
