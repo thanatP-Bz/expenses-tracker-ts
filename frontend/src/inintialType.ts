@@ -1,17 +1,17 @@
-export type ExpenseType = {
+export interface ExpenseType {
   _id: number;
   text: string;
   amount: number;
-};
+}
 
-export type AuthenticationType = {
+export interface AuthenticationType {
   userName: string | null;
   token: string;
   email: string;
-};
+}
 
-export type AlertType = {
+export interface AlertType {
   alertType: string;
   alertText: string;
   showAlert: boolean;
-};
+}

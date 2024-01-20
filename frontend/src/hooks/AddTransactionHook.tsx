@@ -1,8 +1,12 @@
 import axios from "axios";
-import { useAppContext } from "./UseAppContext";
+/* import { useAppContext } from "./UseAppContext"; */
+import { useDispatch } from "react-redux";
+import { addTransactions } from "../expenses/expensesSlice";
 
 export const useAddTransaction = () => {
-  const { dispatch } = useAppContext();
+  /*   const { dispatch } = useAppContext(); */
+
+  const dispatch = useDispatch();
 
   const addTransaction = async (addTransaction: {
     id: number;
@@ -18,8 +22,9 @@ export const useAddTransaction = () => {
     const data = response.data;
 
     try {
-      dispatch({ type: "ADD_TRANSACTION", payload: data });
-
+      /*   dispatch({ type: "ADD_TRANSACTION", payload: data });
+       */
+      dispatch(addTransactions(data));
       //add to localstorage
       localStorage.setItem("item", JSON.stringify(data));
     } catch (error) {
