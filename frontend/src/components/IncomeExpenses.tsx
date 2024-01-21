@@ -1,6 +1,12 @@
-import { useAppContext } from "../hooks/UseAppContext";
+/* import { useAppContext } from "../hooks/UseAppContext"; */
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+
 const IncomeExpenses = () => {
-  const { transactions } = useAppContext();
+  /*  const { transactions } = useAppContext(); */
+  const transactions = useSelector(
+    (state: RootState) => state.expenses.transactions
+  );
 
   const amounts = transactions.map((transaction) => transaction.amount);
 

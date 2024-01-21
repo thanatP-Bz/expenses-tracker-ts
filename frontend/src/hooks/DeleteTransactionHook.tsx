@@ -1,8 +1,11 @@
 import axios from "axios";
-import { useAppContext } from "./UseAppContext";
+import { useDispatch } from "react-redux";
+import { deleteTransactions } from "../expenses/expensesSlice";
+/* import { useAppContext } from "./UseAppContext"; */
 
 export const DeleteTransactionHook = () => {
-  const { dispatch } = useAppContext();
+  /*  const { dispatch } = useAppContext(); */
+  const dispatch = useDispatch();
 
   const deleteTransaction = async (id: number) => {
     const response = await axios.delete(
@@ -10,7 +13,8 @@ export const DeleteTransactionHook = () => {
     );
 
     if (response) {
-      dispatch({ type: "DELETE_TRANSACTION", payload: id });
+      /* dispatch({ type: "DELETE_TRANSACTION", payload: id }); */
+      dispatch(deleteTransactions(id));
     }
 
     //remove from localstorage

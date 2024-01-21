@@ -1,10 +1,16 @@
-import { useAppContext } from "../hooks/UseAppContext";
+/* import { useAppContext } from "../hooks/UseAppContext"; */
+
 import { UseLogoutHook } from "../hooks/UseLogoutHook";
 import Button from "./Button";
+import { RootState } from "../store/store";
+import { useSelector } from "react-redux";
 
 const Balance = () => {
-  const { transactions } = useAppContext();
+  /*   const { transactions } = useAppContext(); */
   const { logout } = UseLogoutHook();
+  const transactions = useSelector(
+    (state: RootState) => state.expenses.transactions
+  );
 
   const amounts = transactions.map((transaction) => transaction.amount);
 
